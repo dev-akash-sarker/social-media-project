@@ -6,7 +6,7 @@ export default function Home() {
       <Helmet>
         <title>Faceconnect - Homepage</title>
       </Helmet>
-      <div>This is my post</div>
+      <div className="mt-10">This is my post</div>
     </>
   );
 }

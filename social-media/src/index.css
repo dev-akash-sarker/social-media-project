@@ -60,3 +60,52 @@
   color: red !important;
   opacity: 1; /* Firefox */
 }
+
+.custom-animation {
+  animation-name: example;
+  animation-duration: 500ms;
+}
+
+@keyframes example {
+  from {
+    width: 40%;
+  }
+  to {width: 90%;}
+}
+
+.custom-animation-return {
+  animation-name: example-return;
+  animation-duration: 500ms;
+}
+
+@keyframes example-return {
+  from {
+    width: 60%;
+  }
+  to {width: 5%;}
+}
+
+@media (min-width: 992px) {
+  .custom-animation {
+    animation-name: example;
+    animation-duration: 500ms;
+  }
+  
+  @keyframes example {
+    from {
+      width: 40%;
+    }
+    to {width: 60%;}
+  }
+  .custom-animation-return {
+    animation-name: example-return;
+    animation-duration: 500ms;
+  }
+  
+  @keyframes example-return {
+    from {
+      width: 60%;
+    }
+    to {width: 40%;}
+  }
+}
