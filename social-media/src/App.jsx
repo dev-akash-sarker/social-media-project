@@ -17,6 +17,7 @@ import Newsfeed from "./pages/home/HomeNav/Newsfeed";
 import Message from "./pages/home/HomeNav/Message";
 import Medias from "./pages/home/HomeNav";
 import Profile from "./pages/profile/Profile";
+import PostHome from "./components/HomeComponents/PostHome";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,8 +29,8 @@ const router = createBrowserRouter(
         </Route>
         <Route element={<LoggedInUser />}>
           <Route element={<RootLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<PostHome />} />
+            <Route path="/home" element={<PostHome />} />
             <Route path="/newsfeed" element={<Newsfeed />} />
             <Route path="/messages" element={<Message />} />
             <Route path="/friends" element={<Friends />} />

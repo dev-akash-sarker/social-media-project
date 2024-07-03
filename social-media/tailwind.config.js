@@ -4,6 +4,7 @@ export default {
   theme: {
     colors: {
       main_bg: "var(--main_bg)",
+      nav_hover_color: "var(--nav-hover)",
       primary_bg: "var(--primary_bg)",
       page_color: "var(--page_color)",
       input_color: "var(--input_color)",
@@ -16,9 +17,14 @@ export default {
       text_color: "var(--text_color)",
       white: "var(--white)",
       red: "var(--red)",
+      blue: "var(--blue)",
       white_light: "var(--white-100)",
       secondary_border_color: "var(--secondary-border-color)",
       secondary_color: "var(--secondary-color)",
+      transparent: "var(--transparent)",
+      blur: "var(--blur)",
+      cyan_100: "var(--cyan-100)",
+      purple_100: "var(--purple-100)",
     },
     fontFamily: {
       GilroyNormal: ["Gilroy regular"],

@@ -17,6 +17,7 @@ export default function Header() {
   const fullRef = useRef(null);
   const inputbox = useRef(null);
   const settingoptionref = useRef(null);
+  // const backsearch = useRef(null);
 
   OutSideClick(fullRef, () => {
     setIsFull(false);
@@ -24,6 +25,9 @@ export default function Header() {
   OutSideClick(settingoptionref, () => {
     setShow(false);
   });
+  // OutSideClick(backsearch, () => {
+  //   setIsFull(false);
+  // });
 
   useEffect(() => {
     inputbox.current.focus();
@@ -36,34 +40,38 @@ export default function Header() {
           <div
             className={
               isFull
-                ? " w-[5%] lg:block lg:w-[40%]"
+                ? " hidden lg:block lg:w-[40%]"
                 : "flex justify-between items-center w-[50%] lg:w-[60%] relative"
             }
           >
             <h4 className="font-GilroyBold text-2xl text-black hidden lg:block">
               Feeds
             </h4>
-            <div
-              onClick={() => isFull(false)}
-              className={isFull ? "lg:hidden" : "hidden lg:hidden"}
-            >
-              <BackSearchIcon width="20px" />
-            </div>
           </div>
           <div
             ref={fullRef}
             className={
               isFull
-                ? "relative w-full lg:w-[60%] custom-animation"
-                : "relative lg:w-[40%] custom-animation-return"
+                ? "relative flex items-center gap-x-3 w-full lg:w-[60%] custom-animation"
+                : "relative flex gap-x-4 lg:w-[40%] custom-animation-return"
             }
           >
+            <div
+              onClick={() => setIsFull(false)}
+              className={
+                isFull
+                  ? "block lg:hidden z-40 ml-4 cursor-pointer"
+                  : "hidden lg:hidden"
+              }
+            >
+              <BackSearchIcon width="20px" />
+            </div>
             <div
               onClick={() => setIsFull(true)}
               className={
                 isFull
-                  ? "w-full z-30 relative flex items-center gap-x-3 border border-secondary_border_color border-1 py-2 px-3 lg:py-3 lg:px-4 rounded-full my-3 font-GilroyNormal"
-                  : "w-12 lg:w-full z-30 relative flex items-center gap-x-3 border border-secondary_border_color border-1 py-2 px-3 lg:py-3 lg:px-4 rounded-full my-3 font-GilroyNormal"
+                  ? "w-full z-30 relative mr-4 flex items-center gap-x-3 border border-secondary_border_color border-1 py-2 px-3 lg:py-3 lg:px-4 rounded-full my-3 font-GilroyNormal"
+                  : "w-14 lg:w-full z-30 relative flex items-center gap-x-3 border border-secondary_border_color border-1 py-2 px-4 lg:py-3 lg:px-4 rounded-full my-3 font-GilroyNormal"
               }
             >
               {!iconvisible && <SearchIcon />}
@@ -80,41 +88,43 @@ export default function Header() {
                   placeholder="Search..."
                   onFocus={() => setIconvisible(false)}
                   onBlur={() => setIconvisible(false)}
-                  className="focus:outline-none cursor-pointer w-full"
+                  className=" absolute top-2 lg:top-3 w-[90%] left-12 focus:outline-none cursor-pointer"
                 />
               </div>
             </div>
             <div
-              className={`${
-                !isFull && "hidden"
-              }  absolute transition-all ease-linear duration-75 top-11 z-10 left-0 w-full bg-white shadow-sm rounded-md min-h-[400px] max-h-[70vh]`}
+              className={
+                isFull
+                  ? "bg-white shadow-md z-10 absolute top-0 left-0 -mt-5 w-full h-[100vh] lg:top-0 lg:left-0 lg:min-h-[400px] lg:max-h-[70vh]"
+                  : "hidden"
+              }
             >
               <SearchSuggestionFeild />
             </div>
+            {isFull == false && (
+              <div className="w-12 h-12 block lg:hidden rounded-full bg-purple border border-line_color my-4"></div>
+            )}
           </div>
         </div>
         <div className="lg:hidden flex justify-start items-center border-b border-primary_color">
-          <div className="w-12 h-12 block lg:hidden rounded-full bg-purple border border-line_color my-4"></div>
           <div className=" flex mx-auto">
             {LeftData.map((data, index) => {
               const Icondata = data.icon;
               const settingseparation = data.title === "Settings" && (
                 <>
-                  <div className="relative">
+                  <div className="py-3 px-5 hover:bg-nav_hover_color rounded-md last:mr-0 relative">
                     <div
                       onClick={() => setShow(!show)}
-                      className={` flex items-center rounded-full hover:bg-black cursor-pointer group ${
-                        show && "bg-black text-white"
-                      }`}
+                      className=" cursor-pointer"
                     >
-                      <div className=" group-hover:text-white">
+                      <div>
                         <Icondata />
                       </div>
                     </div>
                     {show && (
                       <>
                         <div
-                          className=" absolute top-10 -left-[250px] bg-white w-[300px] rounded-md p-4"
+                          className=" absolute shadow-md top-20 -left-[250px] bg-white w-[300px] rounded-md p-4"
                           ref={settingoptionref}
                         >
                           <SettingOptions />
@@ -130,13 +140,24 @@ export default function Header() {
                     settingseparation
                   ) : (
                     <Link
-                      className="mx-8 last:mr-0 relative"
+                      className="py-3 px-5 hover:bg-nav_hover_color rounded-md last:mr-0 relative"
                       key={index}
                       to={data.to}
                     >
-                      <Icondata />
-                      {pathname === data.to && (
-                        <div className=" absolute -z-30 top-[49.5px] left-0 w-[24px] h-[4px] bg-red"></div>
+                      {pathname === data.to ? (
+                        <div className="text-blue">
+                          <Icondata />
+                          {pathname === data.to && (
+                            <div className=" absolute -z-30 top-[49.5px] left-0 w-[64px] rounded-md h-[4px] bg-blue"></div>
+                          )}
+                        </div>
+                      ) : (
+                        <div>
+                          <Icondata />
+                          {pathname === data.to && (
+                            <div className=" absolute -z-30 top-[49.5px] left-0 w-[30px] h-[4px] bg-blue"></div>
+                          )}
+                        </div>
                       )}
                     </Link>
                   )}

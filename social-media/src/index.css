@@ -8,21 +8,35 @@
 
 :root {
   --main_bg: #ffe9d0;
+  --nav-hover: #ececec;
   --page_color: #fffed3;
   --input_color: #bbe9ff;
   --line_color: #f0f2f5;
   --secondary-border-color: #a5a5a5;
-  --primary_line_color: #ddd
+  --primary_line_color: #ddd;
   --primary_bg: #667171;
   --button-color: #b1afff;
   --primary-color: #b1afff;
-  --secondary-color: #999797 ;
+  --secondary-color: #999797;
   --black: #000;
   --white: #fff;
+  --blue: #0000ff;
   --white-100: #f5f5f5;
   --purple-color: #d4afff;
   --text_color: #5a639c;
   --red: #ff1c1c;
+  --transparent: transparent;
+  --blur: rgba(255, 255, 255, 0.742);
+  --cyan-100: rgb(207 250 254);
+  --purple-100: rgb(243 232 255);
+}
+
+.custom-gradient {
+  background-image: linear-gradient(
+    to right,
+    rgb(207 250 254),
+    rgb(243 232 255)
+  );
 }
 
 /* initial fonts */
@@ -61,51 +75,31 @@
   opacity: 1; /* Firefox */
 }
 
-.custom-animation {
-  animation-name: example;
-  animation-duration: 500ms;
-}
-
-@keyframes example {
-  from {
-    width: 40%;
-  }
-  to {width: 90%;}
-}
-
-.custom-animation-return {
-  animation-name: example-return;
-  animation-duration: 500ms;
-}
-
-@keyframes example-return {
-  from {
-    width: 60%;
-  }
-  to {width: 5%;}
-}
-
 @media (min-width: 992px) {
   .custom-animation {
     animation-name: example;
     animation-duration: 500ms;
   }
-  
+
   @keyframes example {
     from {
       width: 40%;
     }
-    to {width: 60%;}
+    to {
+      width: 60%;
+    }
   }
   .custom-animation-return {
     animation-name: example-return;
     animation-duration: 500ms;
   }
-  
+
   @keyframes example-return {
     from {
       width: 60%;
     }
-    to {width: 40%;}
+    to {
+      width: 40%;
+    }
   }
 }

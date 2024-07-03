@@ -22,7 +22,7 @@ export default function LeftHomeData() {
               <div className=" relative">
                 <div
                   onClick={() => setShow(!show)}
-                  className={` flex items-center gap-x-4 mb-5 px-6 py-3 rounded-full hover:bg-black cursor-pointer group ${
+                  className={` flex items-center gap-x-4 mb-5 px-6 lg:px-4 py-3 rounded-full lg:rounded-md xl:rounded-full hover:bg-black cursor-pointer group ${
                     show && "bg-black text-white"
                   }`}
                 >
@@ -30,7 +30,7 @@ export default function LeftHomeData() {
                     <ItemIcon />
                   </div>
                   <div
-                    className={`font-GilroyMedium text-lg text-black group-hover:text-white ${
+                    className={`font-GilroyMedium hidden xl:block text-lg text-black group-hover:text-white ${
                       show && " text-white"
                     }`}
                   >
@@ -58,12 +58,12 @@ export default function LeftHomeData() {
                 <div key={index}>
                   <NavLink
                     to={data.to}
-                    className=" flex items-center gap-x-4 mb-5 px-6 py-3 rounded-full hover:bg-black cursor-pointer group"
+                    className=" flex items-center gap-x-4 mb-5 px-6 lg:px-4 py-3 rounded-full lg:rounded-md xl:rounded-full hover:bg-black cursor-pointer group"
                   >
                     <div className=" group-hover:text-white">
                       <ItemIcon />
                     </div>
-                    <div className=" font-GilroyMedium text-lg text-black group-hover:text-white">
+                    <div className="hidden xl:block font-GilroyMedium text-lg text-black group-hover:text-white">
                       {title}
                     </div>
                   </NavLink>
